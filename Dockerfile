@@ -7,7 +7,7 @@ RUN python3 -m pip install --no-cache-dir \
     jupyterlab==3.0.16
 
 # Set up a non-root user
-ARG NB_USER=jovyan
+ARG NB_USER=fox
 ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
