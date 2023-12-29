@@ -7,23 +7,11 @@ RUN python3 -m pip install --no-cache-dir \
     jupyterlab==3.0.16
 
 # Set up a non-root user
-ARG NB_USER=fox
+ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
-
-# Switch to root to perform administrative tasks
-USER root
-
-# Create the non-root user
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
-# Switch back to the non-root user
-USER ${NB_USER}
 
 # Copy the contents of your repository to the home directory
 COPY . ${HOME}
